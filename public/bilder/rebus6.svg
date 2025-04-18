@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Stave Church -->
+  <g transform="translate(100,20)">
+    <!-- Main structure -->
+    <path d="M100 80 L200 80 L200 200 L100 200 Z" fill="#92400e"/>
+    <path d="M90 80 L210 80 L150 20 Z" fill="#78350f"/>
+    
+    <!-- Tower -->
+    <path d="M130 20 L170 20 L170 60 L130 60 Z" fill="#92400e"/>
+    <path d="M125 20 L175 20 L150 0 Z" fill="#78350f"/>
+    
+    <!-- Door -->
+    <path d="M140 150 L160 150 L160 200 L140 200 Z" fill="#78350f"/>
+    
+    <!-- Cross -->
+    <g transform="translate(150,100)">
+      <rect x="-2" y="-15" width="4" height="30" fill="#78350f"/>
+      <rect x="-10" y="-2" width="20" height="4" fill="#78350f"/>
+    </g>
+  </g>
+  
+  <!-- Drops/Sweat -->
+  <g transform="translate(150,100)">
+    <path d="M0 0 L3 10 L-3 10 Z" fill="#0ea5e9"/>
+    <path d="M10 5 L13 15 L7 15 Z" fill="#0ea5e9"/>
+    <path d="M-10 8 L-7 18 L-13 18 Z" fill="#0ea5e9"/>
+  </g>
+</svg> 

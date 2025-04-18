@@ -1,134 +1,122 @@
 "use client";
 
 import { useState } from "react";
-import { QuizCard } from "@/components/quiz/QuizCard";
-import { quizQuestions, initialQuizState, type QuizState } from "@/lib/quiz-data";
 import { Button } from "@/components/ui/button";
-
-interface ExtendedQuizState extends QuizState {
-  showExplanation: boolean;
-}
-
-const extendedInitialState: ExtendedQuizState = {
-  ...initialQuizState,
-  showExplanation: false,
-};
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { rebusSpørsmål, type RebusQuestion } from "@/lib/quiz-data";
 
 export default function Home() {
-  const [quizState, setQuizState] = useState<ExtendedQuizState>(extendedInitialState);
+  const [currentQuestion, setCurrentQuestion] = useState<RebusQuestion>(rebusSpørsmål[0]);
+  const [svar, setSvar] = useState("");
+  const [feilmelding, setFeilmelding] = useState("");
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [hintsUsed, setHintsUsed] = useState(0);
+  const [showHint, setShowHint] = useState(false);
 
-  const handleAnswer = (answerIndex: number) => {
-    const newAnswers = [...quizState.answers];
-    newAnswers[quizState.currentQuestionIndex] = answerIndex;
-
-    const newScore = newAnswers.reduce((score, answer, index) => {
-      return answer === quizQuestions[index].correctAnswer ? score + 1 : score;
-    }, 0);
-
-    setQuizState((prev) => ({
-      ...prev,
-      answers: newAnswers,
-      score: newScore,
-      showExplanation: true,
-    }));
-  };
-
-  const handleNext = () => {
-    if (quizState.currentQuestionIndex < quizQuestions.length - 1) {
-      setQuizState((prev) => ({
-        ...prev,
-        currentQuestionIndex: prev.currentQuestionIndex + 1,
-        showExplanation: false,
-      }));
+  function handleSvarSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (svar.toLowerCase().trim() === currentQuestion.svar.toLowerCase()) {
+      setIsCorrect(true);
+      setFeilmelding("");
     } else {
-      setQuizState((prev) => ({
-        ...prev,
-        isComplete: true,
-      }));
+      setFeilmelding("Feil svar, prøv igjen!");
+      setIsCorrect(false);
     }
-  };
+  }
 
-  const handleRestart = () => {
-    setQuizState(extendedInitialState);
-  };
+  function handleShowHint() {
+    setShowHint(true);
+    setHintsUsed(prev => prev + 1);
+  }
 
-  const currentQuestion = quizQuestions[quizState.currentQuestionIndex];
-  const isAnswered = quizState.answers[quizState.currentQuestionIndex] !== undefined;
-
-  if (quizState.isComplete) {
-    return (
-      <main className="container mx-auto px-4 py-8 min-h-screen flex items-center justify-center">
-        <div className="max-w-2xl mx-auto text-center space-y-8">
-          <div className="space-y-4">
-            <h1 className="quiz-title animate-float">
-              Quiz Fullført! 🎉
-            </h1>
-            <p className="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/70 to-primary">
-              Gratulerer!
-            </p>
-            <p className="text-xl">
-              Din poengsum: <span className="font-bold text-primary">{quizState.score}</span> av {quizQuestions.length}
-            </p>
-          </div>
-          <Button 
-            onClick={handleRestart} 
-            size="lg"
-            className="text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
-          >
-            Start På Nytt
-          </Button>
-        </div>
-      </main>
-    );
+  function handleRestart() {
+    setCurrentQuestion(rebusSpørsmål[0]);
+    setSvar("");
+    setFeilmelding("");
+    setIsCorrect(false);
+    setHintsUsed(0);
+    setShowHint(false);
   }
 
   return (
-    <main className="container mx-auto px-4 py-8 min-h-screen">
-      <div className="max-w-2xl mx-auto space-y-8">
-        <div className="text-center space-y-4">
-          <div className="relative">
-            <h1 className="quiz-title animate-shine">
-              PåskeQuiz
-              <span className="animate-float inline-block ml-2">🐣</span>
-            </h1>
-            <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
-            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
+    <main className="container mx-auto px-4 py-8 min-h-screen flex flex-col items-center justify-center">
+      <h1 className="quiz-title animate-shine">PåskeQuiz</h1>
+      
+      <Card className="w-full max-w-lg shadow-lg animate-float">
+        <CardHeader className="text-center">
+          <h2 className="text-2xl font-bold">Rebus #{currentQuestion.id}</h2>
+        </CardHeader>
+        
+        <CardContent className="space-y-6">
+          <div className="text-center">
+            <p className="text-lg font-mono mb-4 whitespace-pre-line">{currentQuestion.gåte}</p>
+            {showHint && (
+              <div className="text-sm text-muted-foreground italic space-y-2">
+                {currentQuestion.hint.map((hint, index) => (
+                  <p key={index}>Hint {index + 1}: {hint}</p>
+                ))}
+              </div>
+            )}
           </div>
-          <p className="text-lg text-muted-foreground font-medium">
-            Spørsmål {quizState.currentQuestionIndex + 1} av {quizQuestions.length}
-          </p>
-          <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-primary transition-all duration-300 rounded-full"
-              style={{ 
-                width: `${((quizState.currentQuestionIndex + 1) / quizQuestions.length) * 100}%` 
-              }}
-            />
-          </div>
-        </div>
 
-        <QuizCard
-          question={currentQuestion}
-          onAnswer={handleAnswer}
-          isAnswered={isAnswered}
-          selectedAnswer={quizState.answers[quizState.currentQuestionIndex]}
-          showExplanation={quizState.showExplanation}
-        />
+          {currentQuestion.bilde && (
+            <div className="flex justify-center">
+              <img 
+                src={currentQuestion.bilde} 
+                alt="Rebus bilde"
+                className="rounded-lg max-h-48 object-contain"
+              />
+            </div>
+          )}
 
-        {isAnswered && (
-          <div className="flex justify-end">
-            <Button 
-              onClick={handleNext} 
-              size="lg"
-              className="text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
-            >
-              {quizState.currentQuestionIndex === quizQuestions.length - 1
-                ? "Se Resultater"
-                : "Neste Spørsmål"}
-            </Button>
-          </div>
-        )}
-      </div>
+          {isCorrect ? (
+            <div className="text-center space-y-4">
+              <p className="text-xl font-semibold text-green-600 dark:text-green-400">
+                Gratulerer! Du klarte det{hintsUsed > 0 ? ` med ${hintsUsed} hint` : ""}!
+              </p>
+              <p className="text-sm text-muted-foreground">{currentQuestion.forklaring}</p>
+              <Button onClick={handleRestart} variant="outline">
+                Start på nytt
+              </Button>
+            </div>
+          ) : (
+            <form onSubmit={handleSvarSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <Input
+                  type="text"
+                  value={svar}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSvar(e.target.value)}
+                  placeholder="Skriv ditt svar her..."
+                  className="text-center"
+                />
+                {feilmelding && (
+                  <p className="text-sm text-destructive text-center">
+                    {feilmelding}
+                  </p>
+                )}
+              </div>
+              
+              <div className="flex justify-center gap-2">
+                <Button type="submit">
+                  Sjekk svar
+                </Button>
+                {!showHint && (
+                  <Button type="button" variant="outline" onClick={handleShowHint}>
+                    Vis hint
+                  </Button>
+                )}
+              </div>
+            </form>
+          )}
+        </CardContent>
+
+        <CardFooter className="justify-center text-sm text-muted-foreground">
+          {hintsUsed > 0 && !isCorrect && (
+            <p>Hint brukt: {hintsUsed}</p>
+          )}
+        </CardFooter>
+      </Card>
     </main>
   );
 } 
