@@ -31,7 +31,7 @@ export default function Home() {
   }
 
   function handleRestart() {
-    setCurrentQuestion(rebusSpørsmål[0]);
+    setCurrentQuestion(rebusSpørsmål[currentQuestion.id]);
     setSvar("");
     setFeilmelding("");
     setIsCorrect(false);
@@ -77,7 +77,7 @@ export default function Home() {
               </p>
               <p className="text-sm text-muted-foreground">{currentQuestion.forklaring}</p>
               <Button onClick={handleRestart} variant="outline">
-                Start på nytt
+                Fortsett
               </Button>
             </div>
           ) : (
