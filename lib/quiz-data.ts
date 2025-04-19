@@ -30,110 +30,105 @@ export interface RebusQuestion {
 }
 
 export const rebusSpørsmål: RebusQuestion[] = [
-  {
-    id: 1,
-    gåte: "I påskefjellet står jeg støtt,\nRød T på meg har mange møtt.\nNår du har funnet riktig ord,\nTa andre stavelse og gjør den stor.",
-    hint: [
-      "Tenk på hva du følger i påskefjellet",
-      "Det er totalt 3 stavelser i ordet",
-      "_ _ _ _ _ _ _ _"
-    ],
-    svar: "TURSTIER",
-    nøkkelord: "STI",
-    forklaring: "Turistforeningen merker turstier med rød T. Andre stavelse 'STI' er nøkkelordet som leder til neste gåte.",
-    bilde: "/bilder/rebus1.svg"
-  },
-  {
-    id: 2,
-    gåte: "Med STI i tanke, søk et sted\nDer konger før har lagt seg ned.\nI Oslo finner du meg nå,\nHvor gamle steiner fortsatt står.",
-    hint: [
-      "Tenk på et gammelt byggverk i Oslo",
-      "Stedet har med konger å gjøre",
-      "Det slutter på '-kirke'"
-    ],
-    svar: "GAMLE AKER KIRKE",
-    nøkkelord: "AKER",
-    forklaring: "Gamle Aker kirke er Oslos eldste bygning, og STI + KIRKE ledet til dette historiske stedet.",
-    bilde: "/bilder/rebus2.svg"
-  },
-  {
-    id: 3,
-    gåte: "AKER leder veien din,\nTil noe gult og superfint.\nEn drikk som bare finnes nå,\nNår påskesola skinner på.",
-    hint: [
-      "Tenk på en spesiell påskedrikk",
-      "Navnet inneholder 'AKER'",
-      "Det er en brus"
-    ],
-    svar: "SHAKER",
-    nøkkelord: "SHAKE",
-    forklaring: "Solo Super Shaker er en spesiell påskebrus. 'AKER' fra forrige svar ledet til denne påskedrikken.",
-    bilde: "/bilder/rebus3.svg"
-  },
-  {
-    id: 4,
-    gåte: "SHAKE deg til et påskested,\nDer jazz og ski går hånd i hånd.\nI Østerdalen finner du,\nDen rette plassen - hvor er du?",
-    hint: [
-      "Tenk på en kjent skidestinasjon",
-      "Stedet har en kjent påskejazzfestival",
-      "Det ligger i Innlandet fylke"
-    ],
-    svar: "TRYSIL",
-    nøkkelord: "SIL",
-    forklaring: "Trysil er kjent for sin unike kombinasjon av skisport og påskejazz. 'SHAKE' ledet til dette sportsstedet.",
-    bilde: "/bilder/rebus4.svg"
-  },
-  {
-    id: 5,
-    gåte: "Med SIL i hånden, søk et spor\nAv påskekrim fra tiden stor.\nEt tog ble plyndret denne natt,\nI hvilken by fant røvern' skatt?",
-    hint: [
-      "Tenk på Norges første påskekrim",
-      "Byen ligger på vestkysten",
-      "Toget skulle hit i 1923"
-    ],
-    svar: "BERGEN",
-    nøkkelord: "BERG",
-    forklaring: "'Bergenstoget plyndret i natt!' var Norges første påskekrim. 'SIL' fra forrige svar ledet til denne historiske krimgåten.",
-    bilde: "/bilder/rebus5.svg"
-  },
-  {
-    id: 6,
-    gåte: "BERG tar deg til et hellig sted,\nDer påskeundre skjer der inne.\nEt krusifiks som svetter nå,\nI stavkirken du må det finne.",
-    hint: [
-      "Tenk på en kjent stavkirke",
-      "Stedet er kjent for et mirakel",
-      "Kirken ligger i Vestland fylke"
-    ],
-    svar: "RØLDAL",
-    nøkkelord: "RØL",
-    forklaring: "Røldal stavkirke er kjent for sitt 'svettende' krusifiks. 'BERG' ledet til dette mystiske stedet.",
-    bilde: "/bilder/rebus6.svg"
-  },
-  {
-    id: 7,
-    gåte: "RØL gir deg neste nøkkel nå,\nEt påskegult symbol å få.\nI sjokolade pakket inn,\nEn liten sak med stor appell.",
-    hint: [
-      "Tenk på en kjent påskesjokolade",
-      "Den har gul innpakning",
-      "Perfekt på tur"
-    ],
-    svar: "KVIKKLUNSJ",
-    nøkkelord: "KVIKK",
-    forklaring: "Kvikklunsj er Norges ikoniske påskesjokolade. 'RØL' ledet til denne turklassikeren.",
-    bilde: "/bilder/rebus7.svg"
-  },
-  {
-    id: 8,
-    gåte: "KVIKK fører deg til siste post,\nEn gåte fra en påskekost.\nI VG den sto år etter år,\nHva het den gule rebusens far?",
-    hint: [
-      "Tenk på VGs påskerebus",
-      "Den startet på 1980-tallet",
-      "Navnet har en bindestrek"
-    ],
-    svar: "GUL-E",
-    nøkkelord: "PÅSKE",
-    forklaring: "Gul-E var VGs legendariske påskerebus som startet i 1988. 'KVIKK' ledet til denne påsketradisjonen.",
-    bilde: "/bilder/rebus8.svg"
-  }
+    
+        {
+          "id": 1,
+          "gåte": "Før han forsvant, spiste han en typisk norsk frokost – med denne typen fisk på bordet. Men en uåpnet boks ble liggende igjen. Hva slags fisk var det?",
+          "hint": ["Påleggsfisk", "Ofte i glass eller boks", "Flere varianter – tomat, sennep, sur"],
+          "svar": "SILD",
+          "nøkkelord": "SIL",
+          "forklaring": "Silda ble ikke spist. Noe avbrøt frokosten – kanskje han måtte gå i hast?"
+        },
+        {
+          "id": 2,
+          "gåte": "Ved siden av tallerkenen hans lå det en halv appelsin. En kjerne var borte – og funnet i askebegeret. Hva slags frukt hadde han spist?",
+          "hint": ["Typisk påskefrukt", "Oransje", "Spises i solveggen"],
+          "svar": "APPELSIN",
+          "nøkkelord": "SIN",
+          "forklaring": "Appelsinen tyder på at han planla å dra ut – kanskje på tur i solveggen?"
+        },
+        {
+          "id": 3,
+          "gåte": "Politiet finner et krøllete papir i peisen. En liste – med navn. Men ett navn er krysset ut. Hvilken type gjenstand ble trolig brent?",
+          "hint": ["Brukes til å notere mistenkte", "Lages i krimbøker", "Har oversikt"],
+          "svar": "LISTE",
+          "nøkkelord": "STE",
+          "forklaring": "Listen over mistenkte er delvis brent. Noen prøver å skjule motivet?"
+        },
+        {
+          "id": 4,
+          "gåte": "Utenfor hytta finner de ferske spor i snøen – men kun ett par. De leder til skogkanten og tilbake. Hva har etterlatt disse?",
+          "hint": ["Brukes på beina", "Vanlig på påsketur", "Settes igjen spor i snøen"],
+          "svar": "SKI",
+          "nøkkelord": "SKI",
+          "forklaring": "Bare én person har gått ut og tilbake. Offer eller gjerningsperson?"
+        },
+        {
+          "id": 5,
+          "gåte": "I en av hyttas kroker ligger et halvspist egg. Skallet er knekt, men plommen er urørt. Det ser ut som om han ble avbrutt. Hva slags mat er det?",
+          "hint": ["Kommer fra høna", "Symbol på påske", "Kokes til frokost"],
+          "svar": "EGG",
+          "nøkkelord": "EGG",
+          "forklaring": "Han hadde ikke rukket å spise ferdig. Tiden forsvant brått."
+        },
+        {
+          "id": 6,
+          "gåte": "På et fjellbord ved hytta står en termos. Den er fortsatt lunken. Men innholdet er ikke kakao, som man skulle tro. Det lukter sterkt. Hva kan det være?",
+          "hint": ["Varmt å drikke", "Lages av bønner", "Sort og bitter"],
+          "svar": "KAFFE",
+          "nøkkelord": "KAF",
+          "forklaring": "Han skulle ut og nyte kaffe – men kom aldri så langt."
+        },
+        {
+          "id": 7,
+          "gåte": "I sofaen ligger en bok oppslått. Den er tykk, gul og med store bokstaver. Det ser ut som han nettopp hadde lest. Hva slags bok var det?",
+          "hint": ["Påsketradisjon", "Norsk fenomen", "Selges på bensinstasjoner"],
+          "svar": "PÅSKEKRIM",
+          "nøkkelord": "KRIM",
+          "forklaring": "Han leste krim før han forsvant. Kan historien ha inspirert noen?"
+        },
+        {
+          "id": 8,
+          "gåte": "Politiet finner en sjokoladebit i gangen – delvis smeltet. Den har kjent innpakning: rød og gull, fire striper. Hvilken sjokolade er det?",
+          "hint": ["Turklassiker", "Deles i fire", "Norsk merkevare"],
+          "svar": "KVIKKLUNSJ",
+          "nøkkelord": "LUNSJ",
+          "forklaring": "Noen har hatt med seg kvikklunsj på vei ut – kanskje han ble lokket ut?"
+        },
+        {
+          "id": 9,
+          "gåte": "Et gammelt brettspill ligger på bordet. En av brikkene er fjernet. Det er ikke tilfeldig – den manglende brikken bærer initialene til den savnede. Hva slags aktivitet er dette?",
+          "hint": ["Spilles i hytter", "Ofte krangel om regler", "Har terning"],
+          "svar": "SPILL",
+          "nøkkelord": "PILL",
+          "forklaring": "Et symbolsk trekk? Noen varslet at han var 'ute av spillet'?"
+        },
+        {
+          "id": 10,
+          "gåte": "Et brev er funnet bak peisen. Skriften er ustø. Det står: 'Han visste for mye om __________'. Ordet er revet av, men starter med 'a'.",
+          "hint": ["Kriminelt", "Kan skjules i regnskap", "Ofte pengebasert"],
+          "svar": "AVSLØRINGEN",
+          "nøkkelord": "AVS",
+          "forklaring": "Han hadde funnet ut noe. Et avslørende bevis? Et motiv?"
+        },
+        {
+          "id": 11,
+          "gåte": "Et fingeravtrykk finnes på termosen. Det matcher ingen i familien – men en av de andre gjestene. Hva kalles en slik ledetråd?",
+          "hint": ["Politiet elsker dette", "Brukes i etterforskning", "Unikt for hver person"],
+          "svar": "AVTRYKK",
+          "nøkkelord": "TRYK",
+          "forklaring": "Et tydelig bevis – noen andre har vært på kjøkkenet mens offeret forsvant."
+        },
+        {
+          "id": 12,
+          "gåte": "Siste side i påskekrim-boka var revet ut – men politiet finner den i lommen hans. På siden er en setning understreket: 'Morderen er alltid den man minst venter...'. Hvem var det?",
+          "hint": ["Uventet", "Skjult hele tiden", "Muligens motiv: sjalusi"],
+          "svar": "HUSHJELPEN",
+          "nøkkelord": "HJELP",
+          "forklaring": "Hushjelpen var ikke på noen liste. Hun så og visste mer enn hun burde – og handlet før hun selv ble avslørt."
+        }
+      
+      
 ];
 
 export interface RebusState {

@@ -31,7 +31,8 @@ export default function Home() {
   }
 
   function handleRestart() {
-    setCurrentQuestion(rebusSpørsmål[currentQuestion.id]);
+    const nextQuestionIndex = (currentQuestion.id) % rebusSpørsmål.length;
+    setCurrentQuestion(rebusSpørsmål[nextQuestionIndex]);
     setSvar("");
     setFeilmelding("");
     setIsCorrect(false);
